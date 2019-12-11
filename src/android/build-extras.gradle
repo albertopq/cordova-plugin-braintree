@@ -16,7 +16,7 @@ repositories {
 android {
     defaultConfig {
         applicationId packageName
-        manifestPlaceholders = [cleanPackagename:cleanPackagename]
+        manifestPlaceholders += [cleanPackagename:cleanPackagename]
     }
 }
 
