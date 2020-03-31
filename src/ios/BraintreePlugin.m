@@ -15,7 +15,6 @@
 #import <BraintreeCard/BTCardNonce.h>
 #import <BraintreePayPal/BraintreePayPal.h>
 #import <BraintreeApplePay/BraintreeApplePay.h>
-#import <Braintree3DSecure/Braintree3DSecure.h>
 #import <BraintreeVenmo/BraintreeVenmo.h>
 #import "AppDelegate.h"
 
@@ -311,7 +310,6 @@ NSString *countryCode;
     BTCardNonce *cardNonce;
     BTPayPalAccountNonce *payPalAccountNonce;
     BTApplePayCardNonce *applePayCardNonce;
-    BTThreeDSecureCardNonce *threeDSecureCardNonce;
     BTVenmoAccountNonce *venmoAccountNonce;
 
     if ([paymentMethodNonce isKindOfClass:[BTCardNonce class]]) {
@@ -324,10 +322,6 @@ NSString *countryCode;
 
     if ([paymentMethodNonce isKindOfClass:[BTApplePayCardNonce class]]) {
         applePayCardNonce = (BTApplePayCardNonce*)paymentMethodNonce;
-    }
-
-    if ([paymentMethodNonce isKindOfClass:[BTThreeDSecureCardNonce class]]) {
-        threeDSecureCardNonce = (BTThreeDSecureCardNonce*)paymentMethodNonce;
     }
 
     if ([paymentMethodNonce isKindOfClass:[BTVenmoAccountNonce class]]) {
@@ -361,12 +355,6 @@ NSString *countryCode;
 
                                   // BTApplePayCardNonce
                                   @"applePayCard": !applePayCardNonce ? [NSNull null] : @{
-                                          },
-
-                                  // BTThreeDSecureCardNonce Fields
-                                  @"threeDSecureCard": !threeDSecureCardNonce ? [NSNull null] : @{
-                                          @"liabilityShifted": threeDSecureCardNonce.liabilityShifted ? @YES : @NO,
-                                          @"liabilityShiftPossible": threeDSecureCardNonce.liabilityShiftPossible ? @YES : @NO
                                           },
 
                                   // BTVenmoAccountNonce Fields
